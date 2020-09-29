@@ -147,7 +147,7 @@ paths:
       - "turma"
       summary: " Partially update turma by id"
       description: "Partially update turma by id"
-      operationId: "Partially updateTurma"
+      operationId: "PartiallyUpdateTurma"
       consumes:
       - "application/json"
       produces:
