@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 const Turma = require('../models')
 
-module.exports.getAllTurmas = async function() {
+module.exports.getAllTurmas = async function () {
     const allTurmas = await Turma.find({})
     console.log("TURMA: ", allTurmas)
 
@@ -21,8 +21,9 @@ module.exports.getTurmaById = function (id) {
     }];
 }
 
-module.exports.deleteTurma = function (id) {
-    // TODO: delete
+module.exports.deleteTurma = async function (id) {
+    const turma = await Turma.findByIdAndDelete(id)
+    return turma ? 200 : 404 //ta feio mas funciona
 }
 
 module.exports.updateTurma = function (id, body) {

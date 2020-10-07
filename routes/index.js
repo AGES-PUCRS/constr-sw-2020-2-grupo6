@@ -21,9 +21,10 @@ router.get('/turma/:turmaid', function (req, res, next) {
   res.send(turma)
 });
 
-router.delete('/turma/delete/:turmaid', function (req, res, next) {
+router.delete('/turma/delete/:turmaid', async function (req, res, next) {
   const id = req.params.turmaid
-  const turma = deleteTurma(id)
+  const turma = await deleteTurma(id, res)
+  console.log(turma)
   res.send(turma)
 });
 

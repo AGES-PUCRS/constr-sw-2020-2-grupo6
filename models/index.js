@@ -16,6 +16,26 @@ const turmaSchema = new Mongoose.Schema({
     horario: {
         type: Array,
         required: true
+    },
+    professor: {
+        type: Number,
+        required: true
+    },
+    aulas: {
+        type: Array,
+        required: true
+    },
+    disciplina: {
+        type: Number,
+        required: true
+    },
+    sala: {
+        type: Number,
+        required: true
+    },
+    alunos: {
+        type: Array,
+        required: true
     }
 })
 
