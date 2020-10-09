@@ -1,5 +1,9 @@
 const Turma = require('../models');
 
+/**
+ * GET /turmas
+ */
+
 module.exports.getAllTurmas = async function () {
     const allTurmas = await Turma.find({});
     console.log('TURMA: ', allTurmas);
@@ -7,12 +11,20 @@ module.exports.getAllTurmas = async function () {
     return allTurmas;
 };
 
+/**
+ * GET /turma/:turmaid
+ */
+
 module.exports.getTurmaById = async function (id) {
     const turma = await Turma.findById(id).catch(() => {
         return 404;
     });
     return turma ? turma : 404;
 };
+
+/**
+ * GET /turma/getAulas/:turmaid
+ */
 
 module.exports.getAulasById = async function (id) {
     const aulas = await Turma.findById(id)
@@ -23,6 +35,10 @@ module.exports.getAulasById = async function (id) {
     return aulas ? aulas : 404;
 };
 
+/**
+ * GET /turma/getAlunos/:turmaid
+ */
+
 module.exports.getAlunosById = async function (id) {
     const alunos = await Turma.findById(id)
         .select('alunos')
@@ -31,6 +47,10 @@ module.exports.getAlunosById = async function (id) {
         });
     return alunos ? alunos : 404;
 };
+
+/**
+ * DELETE /turma/delete/:turmaid
+ */
 
 module.exports.deleteTurmaById = async function (id) {
     const turma = await Turma.findByIdAndDelete(id).catch(() => {
@@ -44,10 +64,17 @@ module.exports.deleteTurmaById = async function (id) {
  */
 
 module.exports.updateTurmaById = async function (id, body) {
-    new Turma(body);
+    const t = new Turma(body);
 
-    const turma = await Turma.findByIdAndUpdate(id, body);
-    return turma ? 200 : 404;
+    const fun = await t.validate().catch(() => {
+        return 400;
+    });
+    if (fun === 400) {
+        return fun;
+    } else {
+        const turma = await Turma.findByIdAndUpdate(id, body);
+        return turma ? 200 : 404;
+    }
 };
 
 /**
@@ -61,9 +88,21 @@ module.exports.updateTurmaByField = async function (id, body) {
     return turma ? 200 : 404;
 };
 
-module.exports.createTurma = async function (body) {
-    const turma = new Turma(body);
+/**
+ * POST /turma/create
+ * atenção nesse aqui: to-do
+ */
 
-    await turma.save();
-    return turma;
+module.exports.createTurma = async function (body) {
+    const t = new Turma(body);
+
+    const fun = await t.validate().catch(() => {
+        return 400;
+    });
+    if (fun === 400) {
+        return fun;
+    } else {
+        const turma = await t.save();
+        return turma ? 201 : 400;
+    }
 };
