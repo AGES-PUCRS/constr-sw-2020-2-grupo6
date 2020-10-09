@@ -1,4 +1,4 @@
-const Mongoose = require("mongoose")
+const Mongoose = require('mongoose');
 
 const turmaSchema = new Mongoose.Schema({
     ano: {
@@ -7,36 +7,36 @@ const turmaSchema = new Mongoose.Schema({
     },
     semestre: {
         type: Number,
-        required: true
+        required: true,
     },
     numero: {
         type: Number,
-        required: true
+        required: true,
     },
     horario: {
         type: Array,
-        required: true
+        required: true,
     },
     professor: {
         type: Number,
-        required: true
+        required: true,
     },
     aulas: {
         type: Array,
-        required: true
+        required: true,
     },
     disciplina: {
         type: Number,
-        required: true
+        required: true,
     },
     sala: {
         type: Number,
-        required: true
+        required: true,
     },
     alunos: {
         type: Array,
-        required: true
-    }
-})
+        required: true,
+    },
+});
 
-module.exports = Turma = Mongoose.model("Turma", turmaSchema)
+module.exports = Turma = Mongoose.model('Turma', turmaSchema);
