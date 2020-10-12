@@ -35,7 +35,7 @@ app.use(function(req, res, next) {
 dotenv.config()
 
 //Set up default mongoose connection
-var mongoDB = process.env.MONGO_URL;
+var mongoDB = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/turma";
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
