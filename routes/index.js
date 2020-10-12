@@ -61,4 +61,9 @@ router.patch('/turma/patch/:turmaid', function (req, res, next) {
     res.send(turma);
 });
 
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Turmas' });
+});
+
 module.exports = router;

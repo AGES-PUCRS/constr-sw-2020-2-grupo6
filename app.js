@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var dotenv = require('dotenv')
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./docs/swagger.json');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 //Import the mongoose module
 var mongoose = require('mongoose');
@@ -20,18 +22,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
+// Environment config
+dotenv.config()
+
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1:27017/turma';
+var mongoDB = process.env.MONGO_URL;
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
