@@ -29,3 +29,6 @@ HOST=HOST_RODUCTION
 npm install
 npm start
 ```
+
+# AWS 
+http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/
