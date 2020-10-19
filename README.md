@@ -29,6 +29,8 @@ HOST=HOST_RODUCTION
 npm install
 npm start
 ```
+# Modeling (before integration)
+![modeling](https://cdn.discordapp.com/attachments/574143511683923969/767837795510779914/unknown.png)
 
 # AWS 
 http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/
