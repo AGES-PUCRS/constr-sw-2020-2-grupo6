@@ -51,6 +51,9 @@ router.put('/turma/update/:turmaid', async function (req, res, next) {
 router.post('/turma/create', async function (req, res, next) {
     const body = req.body;
     const turma = await createTurma(body);
+    if (turma !== 400){
+        res.status(201)
+    }
     res.send(turma);
 });
 
