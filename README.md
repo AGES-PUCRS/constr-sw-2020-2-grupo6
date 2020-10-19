@@ -1,3 +1,7 @@
+# AWS 
+Acesse a documentação e as rotas por aqui:
+http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/
+
 # Configuração
 1. Criar um arquivo `.env` na raíz do projeto.
 2. Adicionar as variáveis de conexão para o host e conexão com o banco de dados.
@@ -32,5 +36,4 @@ npm start
 # Modeling (before integration)
 ![modeling](https://cdn.discordapp.com/attachments/574143511683923969/767837795510779914/unknown.png)
 
-# AWS 
-http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/
+
