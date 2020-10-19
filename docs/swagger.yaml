@@ -10,7 +10,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:8080"
+host: "localhost:3000"
 basePath: "/"
 tags:
   - name: "turma"
@@ -55,8 +55,7 @@ paths:
           in: "path"
           description: "ID of turma to return"
           required: true
-          type: "integer"
-          format: "int64"
+          type: "string"
       responses:
         "200":
           description: "OK"

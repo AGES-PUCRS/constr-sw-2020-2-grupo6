@@ -54,15 +54,15 @@ router.post('/turma/create', async function (req, res, next) {
     res.send(turma);
 });
 
-router.patch('/turma/patch/:turmaid', function (req, res, next) {
+router.patch('/turma/patch/:turmaid', async function (req, res, next) {
     const id = req.params.turmaid;
     const body = req.body;
-    const turma = updateTurmaByField(id, body);
+    const turma = await updateTurmaByField(id, body);
     res.send(turma);
 });
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.render('index', { title: 'Turmas' });
 });
 
