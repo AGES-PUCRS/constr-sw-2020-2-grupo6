@@ -1,314 +1,347 @@
----
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "API turmas"
-  version: "1.0.0"
-  title: "Swagger Turma"
-  termsOfService: "http://swagger.io/terms/"
+  description: API turmas
+  version: 1.0.0
+  title: Swagger Turma
+  termsOfService: 'http://swagger.io/terms/'
   contact:
-    email: "apiteam@swagger.io"
+    email: apiteam@swagger.io
   license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:3000"
-basePath: "/"
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:3000'
+basePath: /
 tags:
-  - name: "turma"
-    description: "Turma"
+  - name: turma
+    description: Turma
     externalDocs:
-      description: "Find out more"
-      url: "http://swagger.io"
+      description: Find out more
+      url: 'http://swagger.io'
 schemes:
-  - "http"
+  - http
 paths:
-  /turmas:
+  /turma:
     get:
       tags:
-        - "turma"
-      summary: "Get all turmas"
-      description: "Get a list of all turmas"
-      operationId: "getTurmas"
+        - turma
+      summary: Get all turmas
+      description: Get a list of all turmas
+      operationId: getTurmas
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
-      parameters: []
-      responses:
-        "200":
-          description: "OK"
-          schema:
-            $ref: "#/definitions/getAllTurma"
-      x-swagger-router-controller: "Turma"
-  /turma/{turmaid}:
-    get:
-      tags:
-        - "turma"
-      summary: "Get turma by TurmaId"
-      description: "Get all information about a turma by id"
-      operationId: "getTurma"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
+        - application/json
       parameters:
-        - name: "turmaid"
-          in: "path"
-          description: "ID of turma to return"
-          required: true
-          type: "string"
+        - name: horario
+          in: query
+          required: false
+          type: string
+        - name: aulas
+          in: query
+          required: false
+          type: number
+        - name: alunos
+          in: query
+          required: false
+          type: number
+        - name: numero
+          in: query
+          required: false
+          type: number
+        - name: ano
+          in: query
+          required: false
+          type: number
+        - name: semestre
+          in: query
+          required: false
+          type: number
+        - name: sala
+          in: query
+          required: false
+          type: number
+        - name: professor
+          in: query
+          required: false
+          type: number
+        - name: disciplina
+          in: query
+          required: false
+          type: number
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: OK
           schema:
-            $ref: "#/definitions/Turma"
-        "404":
-          description: "Not found"
-      x-swagger-router-controller: "Turma"
-
-  /turma/getAulas/{turmaid}:
+            $ref: '#/definitions/getAllTurma'
+      x-swagger-router-controller: Turma
+  '/turma/{turmaid}':
     get:
       tags:
-        - "turma"
-      summary: "Get aulas by TurmaId"
-      description: "Get aulas by TurmaId"
-      operationId: "getAulasById"
+        - turma
+      summary: Get turma by TurmaId
+      description: Get all information about a turma by id
+      operationId: getTurma
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
+        - application/json
       parameters:
-        - name: "turmaid"
-          in: "path"
-          description: "ID of turma to return aulas"
+        - name: turmaid
+          in: path
+          description: ID of turma to return
           required: true
-          type: "integer"
-          format: "int64"
+          type: string
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: OK
           schema:
-            $ref: "#/definitions/Aula"
-        "404":
-          description: "Not found"
-      x-swagger-router-controller: "Turma"
-
-  /turma/getAlunos/{turmaid}:
+            $ref: '#/definitions/Turma'
+        '404':
+          description: Not found
+      x-swagger-router-controller: Turma
+  '/turma/getAulas/{turmaid}':
     get:
       tags:
-        - "turma"
-      summary: "Get alunos by TurmaId"
-      description: "Get alunos by TurmaId"
-      operationId: "getAlunosById"
+        - turma
+      summary: Get aulas by TurmaId
+      description: Get aulas by TurmaId
+      operationId: getAulasById
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
+        - application/json
       parameters:
-        - name: "turmaid"
-          in: "path"
-          description: "ID of turma to return alunos"
+        - name: turmaid
+          in: path
+          description: ID of turma to return aulas
           required: true
-          type: "integer"
-          format: "int64"
+          type: string
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: OK
           schema:
-            $ref: "#/definitions/Alunos"
-        "404":
-          description: "Not found"
-      x-swagger-router-controller: "Turma"
-  /turma/delete/{turmaid}:
+            $ref: '#/definitions/Aula'
+        '404':
+          description: Not found
+      x-swagger-router-controller: Turma
+  '/turma/getAlunos/{turmaid}':
+    get:
+      tags:
+        - turma
+      summary: Get alunos by TurmaId
+      description: Get alunos by TurmaId
+      operationId: getAlunosById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: turmaid
+          in: path
+          description: ID of turma to return alunos
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Alunos'
+        '404':
+          description: Not found
+      x-swagger-router-controller: Turma
+  '/turma/delete/{turmaid}':
     delete:
       tags:
-        - "turma"
-      summary: "Delete turma by id"
-      description: "Delete turma by id"
-      operationId: "deleteTurma"
+        - turma
+      summary: Delete turma by id
+      description: Delete turma by id
+      operationId: deleteTurma
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
+        - application/json
       parameters:
-        - name: "turmaid"
-          in: "path"
-          description: "ID of turma deleted to return"
+        - name: turmaid
+          in: path
+          description: ID of turma deleted to return
           required: true
-          type: "integer"
-          format: "int64"
+          type: string
       responses:
-        "200":
-          description: "OK"
-        "404":
-          description: "Not found"
-      x-swagger-router-controller: "Turma"
-  /turma/update/{turmaid}:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+      x-swagger-router-controller: Turma
+  '/turma/update/{turmaid}':
     put:
       tags:
-        - "turma"
-      summary: "Update turma by id"
-      description: "Update turma by id"
-      operationId: "updateTurma"
+        - turma
+      summary: Update turma by id
+      description: Update turma by id
+      operationId: updateTurma
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
+        - application/json
       parameters:
-        - name: "turmaid"
-          in: "path"
-          description: "turma"
+        - name: turmaid
+          in: path
+          description: turma
           required: true
-          type: "string"
-        - in: "body"
-          name: "body"
-          description: "Updated turma item object"
+          type: string
+        - in: body
+          name: body
+          description: Updated turma item object
           required: true
           schema:
-            $ref: "#/definitions/Turma"
+            $ref: '#/definitions/Turma'
       responses:
-        "200":
-          description: "OK"
-        "400":
-          description: "Bad request, not sending all body params"
-        "404":
-          description: "Not found"
-
-      x-swagger-router-controller: "Turma"
+        '200':
+          description: OK
+        '400':
+          description: 'Bad request, not sending all body params'
+        '404':
+          description: Not found
+      x-swagger-router-controller: Turma
   /turma/create/:
     post:
       tags:
-        - "turma"
-      summary: "Create turma"
-      description: "Create turma"
-      operationId: "createTurma"
+        - turma
+      summary: Create turma
+      description: Create turma
+      operationId: createTurma
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
+        - application/json
       parameters:
-        - in: "body"
-          name: "body"
-          description: "Create turma object"
+        - in: body
+          name: body
+          description: Create turma object
           required: true
           schema:
-            $ref: "#/definitions/Turma"
+            $ref: '#/definitions/Turma'
       responses:
-        "201":
-          description: "OK"
-        "302":
-          description: "Already exists"
-        "400":
-          description: "Bad request, not sending all body params"
-  /turma/patch/{turmaid}:
+        '201':
+          description: OK
+        '302':
+          description: Already exists
+        '400':
+          description: 'Bad request, not sending all body params'
+  '/turma/patch/{turmaid}':
     patch:
       tags:
-        - "turma"
-      summary: " Partially update turma by id"
-      description: "Partially update turma by id"
-      operationId: "PartiallyUpdateTurma"
+        - turma
+      summary: ' Partially update turma by id'
+      description: Partially update turma by id
+      operationId: PartiallyUpdateTurma
       consumes:
-        - "application/json"
+        - application/json
       produces:
-        - "application/json"
+        - application/json
       parameters:
-        - name: "turmaid"
-          in: "path"
-          description: "turma"
+        - name: turmaid
+          in: path
+          description: turma
           required: true
-          type: "string"
-        - in: "body"
-          name: "body"
-          description: "Updated turma item object"
+          type: string
+        - in: body
+          name: body
+          description: Updated turma item object
           required: false
           schema:
-            $ref: "#/definitions/Turma"
+            $ref: '#/definitions/Turma'
       responses:
-        "200":
-          description: "OK"
-        "404":
-          description: "Not found"
-
+        '200':
+          description: OK
+        '404':
+          description: Not found
 definitions:
   getAllTurma:
-    type: "array"
+    type: array
     items:
-      $ref: "#/definitions/Turma"
-
+      $ref: '#/definitions/Turma'
   Aula:
-    type: "object"
+    type: object
     properties:
       _id:
-        type: "string"
+        type: string
       aulas:
-        type: "array"
+        type: array
         items:
-          type: "object"
-          properties: { }
+          type: object
+          properties: {}
     example:
-      aulas: [ 60,45 ]
-      _id: "5f7fd7abf185938340bc5168"
-
+      aulas:
+        - 60
+        - 45
+      _id: 5f7fd7abf185938340bc5168
   Alunos:
-    type: "object"
+    type: object
     properties:
       _id:
-        type: "string"
+        type: string
       alunos:
-        type: "array"
+        type: array
         items:
-          type: "object"
-          properties: { }
+          type: object
+          properties: {}
     example:
-      alunos: [ 17105544,18525533 ]
-      _id: "5f7fd7abf185938340bc5168"
-
+      alunos:
+        - 17105544
+        - 18525533
+      _id: 5f7fd7abf185938340bc5168
   Turma:
-    type: "object"
+    type: object
     properties:
       numero:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       ano:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       semestre:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       horario:
-        type: "array"
-        description: "Horario da turma"
+        type: array
+        description: Horario da turma
         items:
-          type: "object"
+          type: object
           properties: {}
       sala:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       professor:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       disciplina:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       aula:
-        type: "array"
+        type: array
         items:
-          type: "object"
-          properties: { }
+          type: object
+          properties: {}
       alunos:
-        type: "array"
+        type: array
         items:
-          type: "object"
-          properties: { }
+          type: object
+          properties: {}
     example:
       numero: 128
       ano: 2015
       horario:
-        - "{2LM}"
-        - "{4NP}"
+        - 2LM
+        - 4NP
       semestre: 1
-      sala: <id>
-      professor: <id>
-      disciplina: <id>
-      aulas: [<id>]
-      alunos: [<id>]
-      
+      sala: 205
+      professor: 10010100
+      disciplina: 1001012
+      aulas:
+        - 60
+        - 45
+      alunos:
+        - 1
+        - 2
+        - 3

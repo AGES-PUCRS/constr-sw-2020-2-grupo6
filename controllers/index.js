@@ -4,8 +4,13 @@ const Turma = require('../models');
  * GET /turmas
  */
 
-module.exports.getAllTurmas = async function () {
-    const allTurmas = await Turma.find({});
+module.exports.getAllTurmas = async function (query) {
+    console.log(query)
+    if (query.aulas){
+        query.aulas = parseInt(query.aulas)
+    }
+
+    const allTurmas = await Turma.find(query);
     console.log('TURMA: ', allTurmas);
 
     return allTurmas;

@@ -12,8 +12,8 @@ const {
 } = require('../controllers');
 
 /* GET home page. */
-router.get('/turmas', async function (req, res, next) {
-    const turmas = await getAllTurmas();
+router.get('/turma', async function (req, res, next) {
+    const turmas = await getAllTurmas(req.query);
     res.send(turmas);
 });
 

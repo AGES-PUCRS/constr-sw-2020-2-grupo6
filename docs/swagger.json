@@ -29,7 +29,7 @@
     "http"
   ],
   "paths": {
-    "/turmas": {
+    "/turma": {
       "get": {
         "tags": [
           "turma"
@@ -43,7 +43,62 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "horario",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "aulas",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "alunos",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "numero",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "ano",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "semestre",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "sala",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "professor",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "disciplina",
+            "in": "query",
+            "required": false,
+            "type": "number"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
