@@ -18,25 +18,25 @@ const turmaSchema = new Mongoose.Schema({
         required: true,
     },
     professor: {
-        type: Number,
+        type: String,
         required: true,
     },
     aulas: {
         type: Array,
-        required: true,
+        required: false,
     },
     disciplina: {
-        type: Number,
+        type: String,
         required: true,
     },
     sala: {
-        type: Number,
+        type: String,
         required: true,
     },
     alunos: {
         type: Array,
-        required: true,
-    },
+        required: false,
+    }
 });
 
 module.exports = Turma = Mongoose.model('Turma', turmaSchema);
