@@ -405,8 +405,8 @@
       },
       "example": {
         "aulas": [
-          60,
-          45
+          "id_aula1",
+          "id_aula2"
         ],
         "_id": "5f7fd7abf185938340bc5168"
       }
@@ -427,8 +427,8 @@
       },
       "example": {
         "alunos": [
-          17105544,
-          18525533
+          "17105544",
+          "18525533"
         ],
         "_id": "5f7fd7abf185938340bc5168"
       }
@@ -491,17 +491,16 @@
           "4NP"
         ],
         "semestre": 1,
-        "sala": 205,
-        "professor": 10010100,
-        "disciplina": 1001012,
+        "sala": "id_sala",
+        "professor": "id_professor",
+        "disciplina": "id_disciplina",
         "aulas": [
-          60,
-          45
+          "id_aula1",
+          "id_aula2"
         ],
         "alunos": [
-          1,
-          2,
-          3
+          "id_aluno1",
+          "id_aluno2"
         ]
       }
     }
