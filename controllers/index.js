@@ -5,13 +5,11 @@ const Turma = require('../models');
  */
 
 module.exports.getAllTurmas = async function (query) {
-    console.log(query)
     if (query.aulas){
         query.aulas = parseInt(query.aulas)
     }
 
     const allTurmas = await Turma.find(query);
-    console.log('TURMA: ', allTurmas);
 
     return allTurmas;
 };
@@ -108,6 +106,6 @@ module.exports.createTurma = async function (body) {
         return fun;
     } else {
         const turma = await t.save();
-        return turma ? 201 : 400;
+        return turma ? turma : 400;
     }
 };
