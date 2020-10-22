@@ -14,7 +14,7 @@ const turmaSchema = new Mongoose.Schema({
         required: true,
     },
     horario: {
-        type: Array,
+        type: [String],
         required: true,
     },
     professor: {
@@ -22,7 +22,7 @@ const turmaSchema = new Mongoose.Schema({
         required: true,
     },
     aulas: {
-        type: Array,
+        type: [String],
         required: false,
     },
     disciplina: {
@@ -34,7 +34,7 @@ const turmaSchema = new Mongoose.Schema({
         required: true,
     },
     alunos: {
-        type: Array,
+        type: [String],
         required: false,
     }
 });
