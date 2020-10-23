@@ -6,13 +6,7 @@ const http = require('http');
  */
 
 module.exports.getAllTurmas = async function (query) {
-    if (query.aulas) {
-        query.aulas = parseInt(query.aulas)
-    }
-
-    const allTurmas = await Turma.find(query);
-
-    return allTurmas;
+    return await Turma.find(query);
 };
 
 /**
