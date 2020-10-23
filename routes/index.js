@@ -19,7 +19,11 @@ router.get('/turma', async function (req, res, next) {
 
 router.get('/turma/:turmaid', async function (req, res, next) {
     const id = req.params.turmaid;
-    const turma = await getTurmaById(id);
+    let query = req.query.expand
+    if (!Array.isArray(query) && query) {
+        query = [query]
+    }
+    const turma = await getTurmaById(id, query);
     res.send(turma);
 });
 

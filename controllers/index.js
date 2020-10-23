@@ -1,11 +1,12 @@
 const Turma = require('../models');
+const http = require('http');
 
 /**
  * GET /turmas
  */
 
 module.exports.getAllTurmas = async function (query) {
-    if (query.aulas){
+    if (query.aulas) {
         query.aulas = parseInt(query.aulas)
     }
 
@@ -18,12 +19,69 @@ module.exports.getAllTurmas = async function (query) {
  * GET /turma/:turmaid
  */
 
-module.exports.getTurmaById = async function (id) {
+module.exports.getTurmaById = async function (id, query) {
     const turma = await Turma.findById(id).catch(() => {
-        return 404;
-    });
-    return turma ? turma : 404;
-};
+        return undefined
+    })
+
+    if (query && turma) {
+        const listGetApi = []
+        for (let i = 0; i < query.length; i++) {
+            listGetApi.push(getAPIs(query[i], turma[query[i]]))
+        }
+        return await Promise.all(listGetApi).then((expands) => {
+            for (let i = 0; i < query.length; i++) {
+                turma._doc[query[i]] = expands[i]
+            }
+            return turma
+        })
+    } else {
+        return turma ? turma : 404
+    }
+}
+
+const APIs = {
+    aulas: 'http://admin:admin@ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes',
+    professor: 'http://ec2-3-91-232-225.compute-1.amazonaws.com:3333/professores',
+    alunos: 'http://ec2-3-236-239-112.compute-1.amazonaws.com:3000/api/alunos',
+    disciplina: '',
+    sala: ''
+}
+
+function getAPIs(api, id) {
+    return new Promise((resolve) => {
+        if (Array.isArray(id)) {
+            const listGetApi = []
+            for (let i = 0; i < id.length; i++) {
+                listGetApi.push(getAPIs(api, id[i]))
+            }
+            return Promise.all(listGetApi).then((expand) => {
+                resolve(expand)
+            })
+        } else {
+            let url = APIs[api] + '/' + id
+            try {
+                http.get(url, function (response) {
+                    response.setEncoding('utf8')
+                    let rawData = ''
+                    response.on('data', (chunk) => {
+                        rawData += chunk
+                    })
+                    response.on('end', () => {
+                        try {
+                            const parsedData = JSON.parse(rawData)
+                            resolve(parsedData)
+                        } catch (e) {
+                            resolve(id)
+                        }
+                    })
+                })
+            } catch (e) {
+                resolve(id)
+            }
+        }
+    })
+}
 
 /**
  * GET /turma/getAulas/:turmaid
