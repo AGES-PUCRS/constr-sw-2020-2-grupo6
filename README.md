@@ -3,13 +3,13 @@ Acesse a documentação e as rotas por aqui:
 > http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/
 
 Utilize o query string da seguinte maneira: 
-> http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma?<campo>=<id>
+> http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma?(campo)=(id)
 
 
 > Ex.: http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma?professor=5f8787faca96b4838099b16f
   
 Para retornar todas as informações de um determinado campo (e não só as ids) utilize o expand:
-> http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma/<idTurma>?expand=<campoExpandido>
+> http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma/(idTurma)?expand=(campoExpandido)
 
 
 > Ex.: http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma/5f9375c46c782394b6e84cc0?expand=aulas
