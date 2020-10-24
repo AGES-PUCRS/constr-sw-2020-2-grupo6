@@ -131,6 +131,16 @@
             "description": "ID of turma to return",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "expand",
+            "collectionFormat": "multi",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
