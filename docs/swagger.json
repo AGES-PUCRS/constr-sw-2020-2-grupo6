@@ -54,13 +54,13 @@
             "name": "aulas",
             "in": "query",
             "required": false,
-            "type": "number"
+            "type": "string"
           },
           {
             "name": "alunos",
             "in": "query",
             "required": false,
-            "type": "number"
+            "type": "string"
           },
           {
             "name": "numero",
@@ -84,19 +84,19 @@
             "name": "sala",
             "in": "query",
             "required": false,
-            "type": "number"
+            "type": "string"
           },
           {
             "name": "professor",
             "in": "query",
             "required": false,
-            "type": "number"
+            "type": "string"
           },
           {
             "name": "disciplina",
             "in": "query",
             "required": false,
-            "type": "number"
+            "type": "string"
           }
         ],
         "responses": {
