@@ -39,7 +39,7 @@ const APIs = {
     professor: 'http://ec2-3-91-232-225.compute-1.amazonaws.com:3333/professores',
     alunos: 'http://ec2-3-236-239-112.compute-1.amazonaws.com:3000/api/alunos',
     disciplina: '',
-    sala: ''
+    sala: 'http://ec2-54-198-241-57.compute-1.amazonaws.com:3001/room'
 }
 
 function getAPIs(api, id) {
