@@ -24,7 +24,7 @@ router.get('/turma/:turmaid', async function (req, res, next) {
         query = [query]
     }
     const turma = await getTurmaById(id, query);
-    res.send(turma);
+    turma === 404 ? res.sendStatus(turma) : res.send(turma);
 });
 
 router.get('/turma/getAulas/:turmaid', async function (req, res, next) {
