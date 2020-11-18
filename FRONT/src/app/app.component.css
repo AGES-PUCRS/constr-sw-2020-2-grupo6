@@ -1,18 +1,22 @@
-/*.mat-table {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 5%;
-  background: white;
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }
 
-
-th.mat-header-cell{
-  color: black;
+.mat-input-element {
+  caret-color: #111111;
+  color: #111111;
+  text-decoration-color: #111111;
 }
 
-.mat-cell{
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.search {
   color: black;
-}*/
+}
 
 table{
   width: 100%;
