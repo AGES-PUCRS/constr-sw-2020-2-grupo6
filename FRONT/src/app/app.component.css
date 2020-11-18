@@ -1,6 +1,14 @@
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+  width: 30%;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: white;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: white;
 }
 
 .mat-input-element {
@@ -12,10 +20,6 @@
 .mat-table {
   overflow: auto;
   max-height: 500px;
-}
-
-.search {
-  color: black;
 }
 
 table{
