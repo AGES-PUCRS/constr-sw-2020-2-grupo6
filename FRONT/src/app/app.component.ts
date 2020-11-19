@@ -2,20 +2,21 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-
-/*export interface PeriodicElement {
-  professor: string;
-  id: number;
-  formacao: string;
-  turmas: number;
-  turno: string;
-}*/
+import { HttpClient } from '@angular/common/http';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+}
+
+export interface Content {
+  aulas: [];
+  bibliography: [];
+  material: [];
+  name: string;
+  _id: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -40,15 +41,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
   {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
 ];
-/*const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 17120004, professor: 'Ana Paula', formacao: 'Tecnologia da Informação', turmas: 8, turno:'Manhã' },
-  {id: 17120005, professor: 'Eduardo', formacao: 'Ciência da Computação', turmas: 7, turno:'Manhã, Noite'},
-  {id: 17120006, professor: 'Silvia', formacao: 'Ciência da Computação', turmas: 10, turno:'Noite'},
-  {id: 17120007, professor: 'Alessandra', formacao: 'Sistemas de Informação', turmas: 12, turno:'Tarde, Noite'},
-  {id: 17120008, professor: 'Isabel', formacao: 'Análise de Dados', turmas: 14, turno:'Manhã, Tarde'},
-  {id: 17120009, professor: 'Sergio', formacao: 'Engenharia da Computação', turmas: 6, turno:'Manhã, Tarde, Noite'},
 
-];*/
 
 /**
  * @title Table with sorting
@@ -61,8 +54,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AppComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  CONTENT_DATA: Content[] | any
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.http.get<Content>('http://3.21.130.129:5000/content/')
+      .subscribe((data: Content) => {
+        console.log(data);
+        this.CONTENT_DATA = data;
+      })
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
