@@ -1,20 +1,32 @@
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search {
+
+}
+
 .mat-form-field {
   font-size: 14px;
   width: 30%;
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: white;
+  background-color: black;
 }
 
 .mat-form-field.mat-focused .mat-form-field-label {
-  color: white;
+  color: black;
 }
 
-.mat-input-element {
-  caret-color: #111111;
-  color: #111111;
-  text-decoration-color: #111111;
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: black;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: black;
 }
 
 .mat-table {
@@ -22,7 +34,7 @@
   max-height: 500px;
 }
 
-table{
+table {
   width: 100%;
 }
 
@@ -43,39 +55,41 @@ header .header-logo {
   display: block;
   margin: 20px 0;
   text-align: left;
-  padding: 0px 20px 0px 40px;
+  padding: 0 20px 0 40px;
   border-right: 3px solid #111111;
   float: left;
   line-height: 38px;
-  font-family: Black;
+  font-family: Black, serif;
   color: #111111;
 }
 
 
 header nav ul {
   display: block;
-  margin: 10px 0px 0px 20px;
+  margin: 10px 0 0 20px;
   width: fit-content;
-  float: left; }
+  float: left;
+}
 
 header nav ul li {
   height: 100%;
   display: inline-block;
   float: left;
   list-style: none;
-  padding: 0 16px; }
+  padding: 0 16px;
+}
 
 header nav ul li a {
   font-size: 16px;
   color: #111111;
   line-height: 60px;
-  color: #111111;
-  font-family: Black;
+  font-family: Black, serif;
 }
 
 header nav ul li:hover {
   background-color: lightgray;
-  transition: 0.5s; }
+  transition: 0.5s;
+}
 
 header .header-login:hover {
   background-color: white;

@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li><a href="#">PROFESSORES</a></li>
-      <li><a href="serv.html">CONTEÚDOS</a></li>
+      <li><a href="#">CONTEÚDOS</a></li>
       <li><a href="#">SALAS</a></li>
       <li><a href="#">AVALIACOES</a></li>
       <li><a href="#">AULAS</a></li>
@@ -17,31 +17,24 @@
 
 <div class="example-container mat-elevation-z8 container">
   <mat-form-field>
-    <input
-      matInput
-      (keyup)="applyFilter($event.target.value)"
-      placeholder="Procurar"
-      class="search"
-    />
+    <label>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Procurar"
+        class="search"
+      />
+    </label>
   </mat-form-field>
   <mat-table [dataSource]="dataSource" matSort>
-    <!-- ID Column -->
+
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         ID Conteúdo
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row._id}} </mat-cell>
     </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="progress">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Descricao
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.progress}} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Nome
@@ -49,15 +42,13 @@
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
 
-    <!-- Color Column -->
-    <ng-container matColumnDef="color">
+    <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Color
+        Descricao
       </mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="row.color">
-        {{row.color}}
-      </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
     </ng-container>
+
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"> </mat-row>
@@ -65,10 +56,3 @@
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-
-
-<!-- @TODO:delete -->
-<code>
-  CONTENT_DATA:<br>
-  {{CONTENT_DATA | json}}
-</code>
