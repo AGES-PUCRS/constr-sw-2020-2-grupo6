@@ -97,7 +97,7 @@ export class DialogEdit {
             this.aulas.push([...b])
         }
     }
-    submit(data){
+    submit(){
         console.log(this)
     }
 }
