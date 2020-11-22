@@ -1,18 +1,48 @@
-<h1 mat-dialog-title>{{data.name}}</h1>
-<div mat-dialog-content>
-    <p>{{data.description}}</p>
+<h1 mat-dialog-title>Editar conteúdo</h1>
+<div mat-dialog-content class="editBody">
+    Nome:
+    <label>
+        <textarea (input)="name=$event.target.value" value="{{data.name}}"></textarea>
+    </label>
+
+    Descrição:
+    <label>
+        <textarea (input)="description=$event.target.value" value="{{data.description}}"></textarea>
+    </label>
+
     Bibliografia:
     <ul>
-        <li *ngFor="let bibliography of data.bibliography">
-            {{bibliography[0] + ': ' + bibliography[1]}}
+        <li *ngFor="let eachBibliography of data.bibliography; let i = index">
+            <label>
+                <textarea (input)="bibliography[i][0]=$event.target.value" value="{{eachBibliography[0]}}"></textarea>
+            </label>
+            <label>
+                <textarea (input)="bibliography[i][1]=$event.target.value" value="{{eachBibliography[1]}}"></textarea>
+            </label>
         </li>
     </ul>
+
     Materiais:
     <ul>
-        <li *ngFor="let material of data.material">{{material[0] + ': ' + material[1]}}</li>
+        <li *ngFor="let material of data.material">
+            <label>
+                <textarea (input)="material[0]=$event.target.value" value="{{material[0]}}"></textarea>
+            </label>
+
+            <label>
+                <textarea (input)="material[1]=$event.target.value" value="{{material[1]}}"></textarea>
+            </label>
+        </li>
     </ul>
+
     Aulas:
     <ul>
-        <li *ngFor="let aula of data.aulas">{{aula}}</li>
+        <li *ngFor="let aula of data.aulas">
+            <label>
+                <textarea (input)="aulas=$event.target.value" value="{{aula}}"></textarea>
+            </label>
+        </li>
     </ul>
+
+    <button (click)="print(data)">Salvar</button>
 </div>

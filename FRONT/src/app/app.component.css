@@ -4,8 +4,22 @@
     justify-content: space-between;
 }
 
-.search {
-
+.editBody {
+    display: flex !important;
+    flex-direction: column;
+    width: 50vh;
+}
+.editBody ul {
+    background: #3399ff;
+    padding: 20px;
+}
+.editBody ul li {
+    background: #cce5ff;
+    padding: 5px 10px 0 5px;
+}
+.editBody textarea {
+    width: 100%;
+    resize: none;
 }
 
 .mat-form-field {

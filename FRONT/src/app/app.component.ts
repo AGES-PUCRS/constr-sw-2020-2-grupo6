@@ -22,7 +22,7 @@ export interface Content {
 })
 
 export class AppComponent {
-    displayedColumns = ["id", "name", "description", "open"];
+    displayedColumns = ["id", "name", "description", "open", "edit"];
     dataSource: MatTableDataSource<Content>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -31,8 +31,12 @@ export class AppComponent {
     constructor(private http: HttpClient, public dialog: MatDialog) {
     }
 
-    openDialog(data) {
+    openViewDialog(data) {
         this.dialog.open(DialogView, {data});
+    }
+
+    openEditDialog(data) {
+        this.dialog.open(DialogEdit, {data});
     }
 
     ngAfterViewInit() {
@@ -68,6 +72,32 @@ export class DialogView {
 })
 
 export class DialogEdit {
+    name: string;
+    description: string;
+    bibliography: [];
+    material: [];
+    aulas: [];
+
     constructor(@Inject(MAT_DIALOG_DATA) public data: Content) {
+        this.name = data.name
+        this.description = data.description
+        this.bibliography = []
+        for(let b of data.bibliography){
+            // @ts-ignore
+            this.bibliography.push([...b])
+        }
+        this.material = []
+        for(let b of data.material){
+            // @ts-ignore
+            this.material.push([...b])
+        }
+        this.aulas = []
+        for(let b of data.aulas){
+            // @ts-ignore
+            this.aulas.push([...b])
+        }
+    }
+    submit(data){
+        console.log(this)
     }
 }
