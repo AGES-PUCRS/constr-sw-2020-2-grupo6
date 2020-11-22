@@ -1,8 +1,9 @@
-import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 
 export interface Content {
   aulas: [];
@@ -21,13 +22,20 @@ export interface Content {
 })
 
 export class AppComponent {
-  displayedColumns = ["id", "name", "description"];
+  displayedColumns = ["id", "name", "description", "open"];
   dataSource: MatTableDataSource<Content>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public dialog: MatDialog) {
+  }
+
+  openDialog(test) {
+    console.log(test)
+    this.dialog.open(DialogDataExampleDialog, {
+      data: {...test}
+    });
   }
 
   ngAfterViewInit() {
@@ -44,5 +52,15 @@ export class AppComponent {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+}
+
+@Component({
+  selector: 'dialog-data-example-dialog',
+  templateUrl: 'dialog-data-example-dialog.html',
+})
+
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Content) {
   }
 }
