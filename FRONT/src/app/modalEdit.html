@@ -24,22 +24,22 @@
 
     Materiais:
     <ul>
-        <li *ngFor="let material of data.material">
+        <li *ngFor="let eachMaterial of data.material; let i = index">
             <label>
-                <textarea (input)="material[0]=$event.target.value" value="{{material[0]}}"></textarea>
+                <textarea (input)="material[i][0]=$event.target.value" value="{{eachMaterial[0]}}"></textarea>
             </label>
 
             <label>
-                <textarea (input)="material[1]=$event.target.value" value="{{material[1]}}"></textarea>
+                <textarea (input)="material[i][1]=$event.target.value" value="{{eachMaterial[1]}}"></textarea>
             </label>
         </li>
     </ul>
 
     Aulas:
     <ul>
-        <li *ngFor="let aula of data.aulas">
+        <li *ngFor="let aula of data.aulas; let i = index">
             <label>
-                <textarea (input)="aulas=$event.target.value" value="{{aula}}"></textarea>
+                <textarea (input)="aulas[i]=$event.target.value" value="{{aula}}"></textarea>
             </label>
         </li>
     </ul>

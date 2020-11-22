@@ -25,6 +25,7 @@
 .mat-form-field {
     font-size: 14px;
     width: 30%;
+    margin-left: 10px;
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {

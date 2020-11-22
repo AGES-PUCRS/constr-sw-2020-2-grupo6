@@ -10,7 +10,7 @@ body {
     font-family: Roboto,
     "Helvetica Neue",
     sans-serif;
-    background-color: #E1E2E1;
+    background: #F0F0F5 url("assets/background.svg") no-repeat left bottom;
 }
 
 section {

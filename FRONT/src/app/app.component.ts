@@ -78,7 +78,7 @@ export class DialogEdit {
     material: [];
     aulas: [];
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: Content) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Content, private http: HttpClient) {
         this.name = data.name
         this.description = data.description
         this.bibliography = []
@@ -97,7 +97,19 @@ export class DialogEdit {
             this.aulas.push([...b])
         }
     }
+
     submit(){
         console.log(this)
+        let body = {
+            name: this.name,
+            description: this.description,
+            bibliography: this.bibliography,
+            material: this.material,
+            aulas: this.aulas
+        }
+        this.http.patch(`http://3.21.130.129:5000/content/${this.data._id}`, body)
+            .subscribe((dataa: Content[] | any) => {
+                console.log(dataa);
+            })
     }
 }
