@@ -114,3 +114,8 @@ header .header-login:hover {
 .viewBody{
     width: 50vh;
  }
+
+.center {
+    display: flex;
+    justify-content: center;
+}
