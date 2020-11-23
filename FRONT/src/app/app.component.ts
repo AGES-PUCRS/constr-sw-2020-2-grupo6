@@ -215,6 +215,7 @@ export class DialogAdd {
                 this.bibliography = []
                 this.material = []
                 this.aulas = []
+                window.location.reload();
             })
     }
 
