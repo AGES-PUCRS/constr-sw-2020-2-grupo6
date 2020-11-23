@@ -110,3 +110,7 @@ header .header-login:hover {
     background-color: white;
     transition: 0.5s;
 }
+
+.viewBody{
+    width: 50vh;
+ }

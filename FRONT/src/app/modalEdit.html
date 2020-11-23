@@ -12,18 +12,24 @@
 
     Bibliografia:
     <ul>
+
+        <button (click)="addBibliografia()">Adicionar</button>
+
         <li *ngFor="let eachBibliography of data.bibliography; let i = index">
             <label>
                 <textarea (input)="bibliography[i][0]=$event.target.value" value="{{eachBibliography[0]}}"></textarea>
+
             </label>
             <label>
                 <textarea (input)="bibliography[i][1]=$event.target.value" value="{{eachBibliography[1]}}"></textarea>
             </label>
+            <button (click)="excluirBibliografia(i)">Excluir</button>
         </li>
     </ul>
 
     Materiais:
     <ul>
+        <button (click)="addMaterial()">Adicionar</button>
         <li *ngFor="let eachMaterial of data.material; let i = index">
             <label>
                 <textarea (input)="material[i][0]=$event.target.value" value="{{eachMaterial[0]}}"></textarea>
@@ -32,17 +38,20 @@
             <label>
                 <textarea (input)="material[i][1]=$event.target.value" value="{{eachMaterial[1]}}"></textarea>
             </label>
+            <button (click)="excluirMaterial(i)">Excluir</button>
         </li>
     </ul>
 
     Aulas:
     <ul>
+        <button (click)="addAula()">Adicionar</button>
         <li *ngFor="let aula of data.aulas; let i = index">
             <label>
                 <textarea (input)="aulas[i]=$event.target.value" value="{{aula}}"></textarea>
             </label>
+            <button (click)="excluirAula(i)">Excluir</button>
         </li>
     </ul>
-
-    <button (click)="submit()">Salvar</button>
 </div>
+
+<button (click)="submit()" mat-dialog-close>Salvar</button>

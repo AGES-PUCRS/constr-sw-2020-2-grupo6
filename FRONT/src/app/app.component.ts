@@ -99,7 +99,6 @@ export class DialogEdit {
     }
 
     submit(){
-        console.log(this)
         let body = {
             name: this.name,
             description: this.description,
@@ -109,7 +108,56 @@ export class DialogEdit {
         }
         this.http.patch(`http://3.21.130.129:5000/content/${this.data._id}`, body)
             .subscribe((dataa: Content[] | any) => {
-                console.log(dataa);
+                this.data.name = this.name
+                this.data.description= this.description
+                this.data.bibliography= this.bibliography
+                this.data.material= this.material
+                this.data.aulas= this.aulas
             })
     }
+
+    addBibliografia(){
+        // @ts-ignore
+        this.bibliography.push(['',''])
+        // @ts-ignore
+        this.data.bibliography.push(['',''])
+
+    }
+
+    excluirBibliografia(index){
+        // @ts-ignore
+        this.bibliography.splice(index,1)
+        // @ts-ignore
+        this.data.bibliography.splice(index,1)
+    }
+
+    addMaterial(){
+        // @ts-ignore
+        this.material.push(['',''])
+        // @ts-ignore
+        this.data.material.push(['',''])
+
+    }
+
+    excluirMaterial(index){
+        // @ts-ignore
+        this.material.splice(index,1)
+        // @ts-ignore
+        this.data.material.splice(index,1)
+    }
+    addAula(){
+        // @ts-ignore
+        this.aulas.push('')
+        // @ts-ignore
+        this.data.aulas.push('')
+
+    }
+
+    excluirAula(index){
+        // @ts-ignore
+        this.aulas.splice(index,1)
+        // @ts-ignore
+        this.data.aulas.splice(index,1)
+    }
+
 }
