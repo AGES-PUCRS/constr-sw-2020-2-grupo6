@@ -15,13 +15,12 @@
     </nav>
 </header>
 
-<div>
-    <div class="center">
-        <button mat-raised-button (click)="handleAdd()">Adicionar um conteúdo</button>
-    </div>
-
-    <div class="center">
-        <mat-form-field>
+<div class="test">
+    <button mat-raised-button (click)="handleAdd()" id="fab">
+        <img src="../assets/fab.svg" alt="Adicionar"/>
+    </button>
+    <div class="example-container mat-elevation-z8 container">
+        <mat-form-field style="padding-top: 24px">
 
             <label>
                 <input
@@ -33,9 +32,6 @@
             </label>
 
         </mat-form-field>
-    </div>
-    <div class="example-container mat-elevation-z8 container">
-
         <mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="id">
