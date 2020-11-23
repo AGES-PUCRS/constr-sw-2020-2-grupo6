@@ -59,8 +59,8 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
 
                 </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <button mat-raised-button (click)="openViewDialog(row)">Ver mais</button>
+                <mat-cell *matCellDef="let row" style="justify-content: center">
+                    <button style="border: #111111 1px solid;" mat-raised-button (click)="openViewDialog(row)">Ver mais</button>
                 </mat-cell>
             </ng-container>
 
@@ -68,8 +68,8 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
 
                 </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <button mat-raised-button (click)="openEditDialog(row)">Edit</button>
+                <mat-cell *matCellDef="let row" style="justify-content: center">
+                    <button style="border: #111111 1px solid;" mat-raised-button (click)="openEditDialog(row)">Edit</button>
                 </mat-cell>
             </ng-container>
 
@@ -77,8 +77,8 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
 
                 </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <button mat-raised-button (click)="handleDelete(row._id)">Excluir</button>
+                <mat-cell *matCellDef="let row" style="justify-content: center; width: 50px">
+                    <button style="border: #111111 1px solid;" mat-raised-button (click)="handleDelete(row._id)">Excluir</button>
                 </mat-cell>
             </ng-container>
 

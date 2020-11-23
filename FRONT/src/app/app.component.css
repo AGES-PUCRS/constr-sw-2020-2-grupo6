@@ -16,6 +16,10 @@
     height: fit-content;
 }
 
+button {
+    border: #111111 1px solid;
+}
+
 .editBody {
     display: flex !important;
     flex-direction: column;
