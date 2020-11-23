@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent, DialogEdit, DialogView} from './app.component';
+import {AppComponent, DialogEdit, DialogView, DialogAdd} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -40,7 +40,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     declarations: [
         AppComponent,
         DialogView,
-        DialogEdit
+        DialogEdit,
+        DialogAdd
     ],
     imports: [
         BrowserModule,

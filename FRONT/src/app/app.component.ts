@@ -67,6 +67,10 @@ export class AppComponent {
                 this.getInfo()
             })
     }
+
+    handleAdd() {
+        this.dialog.open(DialogAdd);
+    }
 }
 
 @Component({
@@ -166,11 +170,83 @@ export class DialogEdit {
 
     }
 
-    excluirAula(index){
+    excluirAula(index) {
         // @ts-ignore
-        this.aulas.splice(index,1)
+        this.aulas.splice(index, 1)
         // @ts-ignore
-        this.data.aulas.splice(index,1)
+        this.data.aulas.splice(index, 1)
     }
 
+
+}
+
+@Component({
+    selector: 'dialog-add',
+    templateUrl: 'modalAdd.html',
+})
+
+export class DialogAdd {
+    name: string;
+    description: string;
+    bibliography: [];
+    material: [];
+    aulas: [];
+
+    constructor(private http: HttpClient) {
+        this.name = '';
+        this.description = '';
+        this.bibliography = [];
+        this.material = [];
+        this.aulas = [];
+    }
+
+    submit() {
+        let body = {
+            name: this.name,
+            description: this.description,
+            bibliography: this.bibliography,
+            material: this.material,
+            aulas: this.aulas
+        }
+        this.http.post(`http://3.21.130.129:5000/content`, body)
+            .subscribe((dataa: Content[] | any) => {
+                this.name = ""
+                this.description = ""
+                this.bibliography = []
+                this.material = []
+                this.aulas = []
+            })
+    }
+
+    addBibliografia() {
+        // @ts-ignore
+        this.bibliography.push(['', ''])
+
+    }
+
+    excluirBibliografia(index) {
+        // @ts-ignore
+        this.bibliography.splice(index, 1)
+    }
+
+    addMaterial() {
+        // @ts-ignore
+        this.material.push(['', ''])
+    }
+
+    excluirMaterial(index) {
+        // @ts-ignore
+        this.material.splice(index, 1)
+    }
+
+    addAula() {
+        // @ts-ignore
+        this.aulas.push('')
+
+    }
+
+    excluirAula(index) {
+        // @ts-ignore
+        this.aulas.splice(index, 1)
+    }
 }

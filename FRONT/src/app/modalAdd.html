@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Editar conteúdo</h1>
+<div mat-dialog-content class="editBody">
+    Nome:
+    <label>
+        <textarea (input)="name=$event.target.value" value="{{name}}"></textarea>
+    </label>
+
+    Descrição:
+    <label>
+        <textarea (input)="description=$event.target.value" value="{{description}}"></textarea>
+    </label>
+
+    Bibliografia:
+    <ul>
+
+        <button (click)="addBibliografia()">Adicionar</button>
+
+        <li *ngFor="let eachBibliography of bibliography; let i = index">
+            <label>
+                <textarea (input)="bibliography[i][0]=$event.target.value" value="{{eachBibliography[0]}}"></textarea>
+
+            </label>
+            <label>
+                <textarea (input)="bibliography[i][1]=$event.target.value" value="{{eachBibliography[1]}}"></textarea>
+            </label>
+            <button (click)="excluirBibliografia(i)">Excluir</button>
+        </li>
+    </ul>
+
+    Materiais:
+    <ul>
+        <button (click)="addMaterial()">Adicionar</button>
+        <li *ngFor="let eachMaterial of material; let i = index">
+            <label>
+                <textarea (input)="material[i][0]=$event.target.value" value="{{eachMaterial[0]}}"></textarea>
+            </label>
+
+            <label>
+                <textarea (input)="material[i][1]=$event.target.value" value="{{eachMaterial[1]}}"></textarea>
+            </label>
+            <button (click)="excluirMaterial(i)">Excluir</button>
+        </li>
+    </ul>
+
+    Aulas:
+    <ul>
+        <button (click)="addAula()">Adicionar</button>
+        <li *ngFor="let aula of aulas; let i = index">
+            <label>
+                <textarea (input)="aulas[i]=$event.target.value" value="{{aula}}"></textarea>
+            </label>
+            <button (click)="excluirAula(i)">Excluir</button>
+        </li>
+    </ul>
+</div>
+
+<button (click)="submit()" mat-dialog-close>Salvar</button>

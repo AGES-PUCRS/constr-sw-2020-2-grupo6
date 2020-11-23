@@ -16,8 +16,10 @@
 </header>
 
 <div class="test">
+    <button mat-raised-button (click)="handleAdd()">Adicionar um conteúdo</button>
     <div class="example-container mat-elevation-z8 container">
         <mat-form-field>
+
             <label>
                 <input
                     matInput
@@ -26,6 +28,7 @@
                     class="search"
                 />
             </label>
+
         </mat-form-field>
         <mat-table [dataSource]="dataSource" matSort>
 
