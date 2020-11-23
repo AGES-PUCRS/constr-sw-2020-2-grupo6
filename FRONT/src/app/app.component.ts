@@ -22,7 +22,7 @@ export interface Content {
 })
 
 export class AppComponent {
-    displayedColumns = ["id", "name", "description", "open", "edit"];
+    displayedColumns = ["id", "name", "description", "open", "edit", 'delete'];
     dataSource: MatTableDataSource<Content>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -39,7 +39,7 @@ export class AppComponent {
         this.dialog.open(DialogEdit, {data});
     }
 
-    ngAfterViewInit() {
+    getInfo(){
         this.http.get<Content>('http://3.21.130.129:5000/content/')
             .subscribe((data: Content[] | any) => {
                 console.log(data);
@@ -47,12 +47,25 @@ export class AppComponent {
                 this.dataSource.paginator = this.paginator;
                 this.dataSource.sort = this.sort;
             })
+
+    }
+
+
+    ngAfterViewInit() {
+        this.getInfo()
     }
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
         filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
         this.dataSource.filter = filterValue;
+    }
+
+    handleDelete(id) {
+        this.http.delete(`http://3.21.130.129:5000/content/${id}`)
+            .subscribe((dataa: Content[] | any) => {
+                this.getInfo()
+            })
     }
 }
 
