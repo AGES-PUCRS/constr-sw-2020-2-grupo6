@@ -37,7 +37,7 @@ module.exports.getTurmaById = async function (id, query) {
 const APIs = {
     aulas: 'http://admin:admin@ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes',
     professor: 'http://ec2-3-91-232-225.compute-1.amazonaws.com:3333/professores',
-    alunos: 'http://ec2-3-236-239-112.compute-1.amazonaws.com:3000/api/alunos',
+    alunos: 'http://ec2-34-228-52-17.compute-1.amazonaws.com:3000/api/alunos',
     disciplina: 'http://ec2-18-225-37-214.us-east-2.compute.amazonaws.com:3333/disciplinas',
     sala: 'http://ec2-18-220-149-196.us-east-2.compute.amazonaws.com:3001/room'
 }
