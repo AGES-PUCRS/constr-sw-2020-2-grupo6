@@ -13,7 +13,13 @@ const {
 
 /* GET home page. */
 router.get('/turma', async function (req, res, next) {
-    const turmas = await getAllTurmas(req.query);
+    let expand = req.query.expand
+    if (!Array.isArray(expand) && expand) {
+        expand = [expand]
+    }
+    let query = {...req.query}
+    query.expand = undefined
+    const turmas = await getAllTurmas(query, expand);
     res.send(turmas);
 });
 

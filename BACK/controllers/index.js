@@ -5,8 +5,22 @@ const http = require('http');
  * GET /turmas
  */
 
-module.exports.getAllTurmas = async function (query) {
-    return await Turma.find(query);
+module.exports.getAllTurmas = async function (query, expand) {
+    const turma = await Turma.find(query).catch(() => {
+        return undefined
+    })
+
+    if (expand && turma) {
+        const listExpand = []
+        for (let i = 0; i < turma.length; i++) {
+            listExpand.push(await expandTurma(turma[i], expand))
+        }
+        return await Promise.all(listExpand).then((expands) => {
+            return turma
+        })
+    } else {
+        return turma ? turma : 404
+    }
 };
 
 /**
@@ -19,20 +33,28 @@ module.exports.getTurmaById = async function (id, query) {
     })
 
     if (query && turma) {
-        const listGetApi = []
-        for (let i = 0; i < query.length; i++) {
-            listGetApi.push(getAPIs(query[i], turma[query[i]]))
-        }
-        return await Promise.all(listGetApi).then((expands) => {
-            for (let i = 0; i < query.length; i++) {
-                turma._doc[query[i]] = expands[i]
-            }
-            return turma
-        })
+        return await expandTurma(turma, query)
     } else {
         return turma ? turma : 404
     }
 }
+
+async function expandTurma(turma, query) {
+    console.log(turma)
+    console.log(query)
+    const listGetApi = []
+    for (let i = 0; i < query.length; i++) {
+        listGetApi.push(getAPIs(query[i], turma[query[i]]))
+    }
+    return await Promise.all(listGetApi).then((expands) => {
+        for (let i = 0; i < query.length; i++) {
+            turma._doc[query[i]] = expands[i]
+        }
+        console.log(turma)
+        return turma
+    })
+}
+
 
 const APIs = {
     aulas: 'http://admin:admin@ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes',
