@@ -5,7 +5,7 @@
             <li><a href="#">PROFESSORES</a></li>
             <li><a href="#">CONTEÚDOS</a></li>
             <li><a href="#">SALAS</a></li>
-            <li><a href="#">AVALIACOES</a></li>
+            <li><a href="#">AVALIAÇÕES</a></li>
             <li><a href="#">AULAS</a></li>
             <li><a href="#">TURMAS</a></li>
             <li><a href="#">ALUNOS</a></li>
@@ -16,19 +16,12 @@
 </header>
 
 <div class="test">
-    <button mat-raised-button (click)="handleAdd()" id="fab">
-        <img src="../assets/fab.svg" alt="Adicionar"/>
-    </button>
+
     <div class="example-container mat-elevation-z8 container">
         <mat-form-field style="padding-top: 24px">
 
             <label>
-                <input
-                    matInput
-                    (keyup)="applyFilter($event.target.value)"
-                    placeholder="Procurar"
-                    class="search"
-                />
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Procurar" class="search" />
             </label>
 
         </mat-form-field>
@@ -50,42 +43,44 @@
 
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Descricao
+                    Descriçao
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="open">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>
 
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row" style="justify-content: center">
-                    <button style="border: #111111 1px solid;" mat-raised-button (click)="openViewDialog(row)">Ver mais</button>
-                </mat-cell>
-            </ng-container>
 
             <ng-container matColumnDef="edit">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
 
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row" style="justify-content: center">
-                    <button style="border: #111111 1px solid;" mat-raised-button (click)="openEditDialog(row)">Edit</button>
+
+                    <button mat-raised-button (click)="openViewDialog(row)">
+                        <img src="../assets/lupa.svg" alt="Ver Mais" />
+                    </button>
+                    <button mat-raised-button (click)="handleDelete(row._id)">
+                        <img src="../assets/excluir1.svg" alt="Excluir" />
+                    </button>
+
+                    <button mat-raised-button (click)="openEditDialog(row)">
+                        <img src="../assets/editar.svg" alt="Editar" />
+                    </button>
+
+
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="delete">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>
 
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row" style="justify-content: center; width: 50px">
-                    <button style="border: #111111 1px solid;" mat-raised-button (click)="handleDelete(row._id)">Excluir</button>
-                </mat-cell>
-            </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
+        <button mat-raised-button (click)="handleAdd()" id="fab">
+            <img src="../assets/fab.svg" alt="Adicionar" />
+        </button>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+            style="display: flex;justify-content: center;padding: 10px;"></mat-paginator>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
 </div>

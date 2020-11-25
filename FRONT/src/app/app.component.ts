@@ -22,7 +22,7 @@ export interface Content {
 })
 
 export class AppComponent {
-    displayedColumns = ["id", "name", "description", "open", "edit", 'delete'];
+    displayedColumns = ["id", "name", "description", "edit"];
     dataSource: MatTableDataSource<Content>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
