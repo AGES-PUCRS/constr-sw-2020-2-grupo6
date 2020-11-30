@@ -1,0 +1,84 @@
+<header>
+    <a href="index.html" class="header-logo">pucrs</a>
+    <nav>
+        <ul>
+            <li><a href="#">PROFESSORES</a></li>
+            <li><a href="#">CONTEÚDOS</a></li>
+            <li><a href="#">SALAS</a></li>
+            <li><a href="#">AVALIAÇÕES</a></li>
+            <li><a href="#">AULAS</a></li>
+            <li><a href="#">TURMAS</a></li>
+            <li><a href="#">ALUNOS</a></li>
+            <li><a href="#">DISCIPLINAS</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<div class="test">
+
+    <div class="example-container mat-elevation-z8 container">
+        <mat-form-field style="padding-top: 24px">
+
+            <label>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Procurar" class="search"/>
+            </label>
+
+        </mat-form-field>
+        <mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    ID Conteúdo
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row._id}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Nome
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Descriçao
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row" style="justify-content: center">
+
+                    <button style="margin: 0 5px" mat-raised-button (click)="openViewDialog(row)">
+                        <img src="../assets/lupa.svg" alt="Ver Mais"/>
+                    </button>
+                    <button style="margin: 0 5px" mat-raised-button (click)="handleDelete(row._id)">
+                        <img src="../assets/excluir1.svg" alt="Excluir"/>
+                    </button>
+
+                    <button style="margin: 0 5px" mat-raised-button (click)="openEditDialog(row)">
+                        <img src="../assets/editar.svg" alt="Editar"/>
+                    </button>
+
+
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <button mat-raised-button (click)="handleAdd()" id="fab">
+            <img src="../assets/fab.svg" alt="Adicionar"/>
+        </button>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                       style="display: flex;justify-content: center;padding: 10px;"></mat-paginator>
+
+    </div>
+</div>

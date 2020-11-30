@@ -1,0 +1,172 @@
+.mat-dialog-container {
+ background-color: #F9F9F9;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#fab {
+    position: absolute;
+    right: 95px;
+    margin-top: -8px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+button {
+    border: #111111 1px solid;
+}
+
+.editBody {
+    display: flex !important;
+    flex-direction: column;
+    width: 50vh;
+}
+
+.editBody ul {
+    background: #3399ff;
+    padding: 20px;
+}
+
+.editBody ul li {
+    background: #cce5ff;
+    padding: 5px 10px 0 5px;
+}
+
+.editBody textarea {
+    width: 100%;
+    resize: none;
+    width: 96%;
+    padding-top: 18px;
+    padding-left: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+     background-color: #F5F5F5;
+}
+
+.bibliography {
+    margin: 48px 0;
+}
+
+.button-add {
+    height: 60px;
+    width: 100%;
+    left: 55px;
+    top: 1003px;
+    border-radius: 8px;
+    background-color: #0750DE;
+    color: #FFFFFF;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 30%;
+    margin-left: 10px;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: black;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: black;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: black;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: black;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+table {
+    width: 100%;
+}
+
+.container {
+    margin: 30px 30px 30px 30px;
+}
+
+header {
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 80px;
+}
+
+header .header-logo {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+    margin: 20px 0;
+    text-align: left;
+    padding: 0 20px 0 40px;
+    border-right: 3px solid #111111;
+    float: left;
+    line-height: 38px;
+    font-family: Black, serif;
+    color: #111111;
+}
+
+
+header nav ul {
+    display: block;
+    margin: 10px 0 0 20px;
+    width: fit-content;
+    float: left;
+}
+
+header nav ul li {
+    height: 100%;
+    display: inline-block;
+    float: left;
+    list-style: none;
+    padding: 0 16px;
+}
+
+header nav ul li a {
+    font-size: 16px;
+    color: #111111;
+    line-height: 60px;
+    font-family: Black, serif;
+}
+
+header nav ul li:hover {
+    background-color: lightgray;
+    transition: 0.5s;
+}
+
+header .header-login:hover {
+    background-color: white;
+    transition: 0.5s;
+}
+
+.viewBody {
+    width: 50vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-input {
+    position: absolute;
+    width: 448px;
+    height: 60px;
+    left: 57px;
+    top: 96px;
+}
