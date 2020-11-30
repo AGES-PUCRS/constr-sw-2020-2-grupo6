@@ -195,8 +195,8 @@ export class DialogAdd {
     constructor(private http: HttpClient) {
         this.name = '';
         this.description = '';
-        this.bibliography = ['',' '];
-        this.material = ['',''];
+        this.bibliography = [['',' ']];
+        this.material = [['','']];
         this.aulas = [''];
     }
 
