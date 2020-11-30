@@ -57,7 +57,7 @@ button {
 
 .button-add {
     height: 60px;
-    width: 448px;
+    width: 100%;
     left: 55px;
     top: 1003px;
     border-radius: 8px;

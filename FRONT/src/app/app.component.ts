@@ -3,7 +3,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {HttpClient} from '@angular/common/http';
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 
 export interface Content {
     aulas: [];
@@ -22,7 +22,7 @@ export interface Content {
 })
 
 export class AppComponent {
-    displayedColumns = ["id", "name", "description", "edit"];
+    displayedColumns = ['id', 'name', 'description', 'edit'];
     dataSource: MatTableDataSource<Content>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -52,7 +52,7 @@ export class AppComponent {
 
 
     ngAfterViewInit() {
-        this.getInfo()
+        this.getInfo();
     }
 
     applyFilter(filterValue: string) {
@@ -64,8 +64,8 @@ export class AppComponent {
     handleDelete(id) {
         this.http.delete(`http://3.21.130.129:5000/content/${id}`)
             .subscribe((dataa: Content[] | any) => {
-                this.getInfo()
-            })
+                this.getInfo();
+            });
     }
 
     handleAdd() {
@@ -96,85 +96,85 @@ export class DialogEdit {
     aulas: [];
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: Content, private http: HttpClient) {
-        this.name = data.name
-        this.description = data.description
-        this.bibliography = []
-        for(let b of data.bibliography){
+        this.name = data.name;
+        this.description = data.description;
+        this.bibliography = [];
+        for (let b of data.bibliography) {
             // @ts-ignore
-            this.bibliography.push([...b])
+            this.bibliography.push([...b]);
         }
-        this.material = []
-        for(let b of data.material){
+        this.material = [];
+        for (let b of data.material) {
             // @ts-ignore
-            this.material.push([...b])
+            this.material.push([...b]);
         }
+
         this.aulas = []
-        for(let b of data.aulas){
-            // @ts-ignore
-            this.aulas.push([...b])
-        }
+        // @ts-ignore
+        this.aulas.push([...data.aulas]);
     }
 
-    submit(){
+    submit() {
         let body = {
             name: this.name,
             description: this.description,
             bibliography: this.bibliography,
             material: this.material,
             aulas: this.aulas
-        }
+        };
         this.http.patch(`http://3.21.130.129:5000/content/${this.data._id}`, body)
             .subscribe((dataa: Content[] | any) => {
-                this.data.name = this.name
-                this.data.description= this.description
-                this.data.bibliography= this.bibliography
-                this.data.material= this.material
-                this.data.aulas= this.aulas
-            })
+                this.data.name = this.name;
+                this.data.description = this.description;
+                this.data.bibliography = this.bibliography;
+                this.data.material = this.material;
+                this.data.aulas = this.aulas;
+            });
     }
 
-    addBibliografia(){
+    addBibliografia() {
         // @ts-ignore
-        this.bibliography.push(['',''])
+        this.bibliography.push(['', '']);
         // @ts-ignore
-        this.data.bibliography.push(['',''])
-
-    }
-
-    excluirBibliografia(index){
-        // @ts-ignore
-        this.bibliography.splice(index,1)
-        // @ts-ignore
-        this.data.bibliography.splice(index,1)
-    }
-
-    addMaterial(){
-        // @ts-ignore
-        this.material.push(['',''])
-        // @ts-ignore
-        this.data.material.push(['',''])
+        this.data.bibliography.push(['', '']);
 
     }
 
-    excluirMaterial(index){
+    excluirBibliografia(index) {
         // @ts-ignore
-        this.material.splice(index,1)
+        this.bibliography.splice(index, 1);
         // @ts-ignore
-        this.data.material.splice(index,1)
+        this.data.bibliography.splice(index, 1);
     }
-    addAula(){
+
+    addMaterial() {
         // @ts-ignore
-        this.aulas.push('')
+        this.material.push(['', '']);
         // @ts-ignore
-        this.data.aulas.push('')
+        this.data.material.push(['', '']);
+
+    }
+
+    excluirMaterial(index) {
+        // @ts-ignore
+        this.material.splice(index, 1);
+        // @ts-ignore
+        this.data.material.splice(index, 1);
+    }
+
+    addAula() {
+        // @ts-ignore
+        this.aulas.push('');
+        // @ts-ignore
+        this.data.aulas.push('');
 
     }
 
     excluirAula(index) {
         // @ts-ignore
-        this.aulas.splice(index, 1)
+        this.aulas.splice(index, 1);
         // @ts-ignore
-        this.data.aulas.splice(index, 1)
+        this.data.aulas.splice(index, 1);
     }
 
 
@@ -195,8 +195,8 @@ export class DialogAdd {
     constructor(private http: HttpClient) {
         this.name = '';
         this.description = '';
-        this.bibliography = [['',' ']];
-        this.material = [['','']];
+        this.bibliography = [['', ' ']];
+        this.material = [['', '']];
         this.aulas = [''];
     }
 
@@ -207,47 +207,47 @@ export class DialogAdd {
             bibliography: this.bibliography,
             material: this.material,
             aulas: this.aulas
-        }
+        };
         this.http.post(`http://3.21.130.129:5000/content`, body)
             .subscribe((dataa: Content[] | any) => {
-                this.name = ""
-                this.description = ""
-                this.bibliography = []
-                this.material = []
-                this.aulas = []
+                this.name = '';
+                this.description = '';
+                this.bibliography = [];
+                this.material = [];
+                this.aulas = [];
                 window.location.reload();
-            })
+            });
     }
 
     addBibliografia() {
         // @ts-ignore
-        this.bibliography.push(['', ''])
+        this.bibliography.push(['', '']);
 
     }
 
     excluirBibliografia(index) {
         // @ts-ignore
-        this.bibliography.splice(index, 1)
+        this.bibliography.splice(index, 1);
     }
 
     addMaterial() {
         // @ts-ignore
-        this.material.push(['', ''])
+        this.material.push(['', '']);
     }
 
     excluirMaterial(index) {
         // @ts-ignore
-        this.material.splice(index, 1)
+        this.material.splice(index, 1);
     }
 
     addAula() {
         // @ts-ignore
-        this.aulas.push('')
+        this.aulas.push('');
 
     }
 
     excluirAula(index) {
         // @ts-ignore
-        this.aulas.splice(index, 1)
+        this.aulas.splice(index, 1);
     }
 }

@@ -14,33 +14,35 @@
             <textarea (input)="description=$event.target.value" value="{{description}}"></textarea>
         </label>
 
-        <div class="pure-g bibliography">
-            <div class="pure-u-1-6" style="margin-left: 10px;">
-                Bibliografia:
-            </div>
-            <div class="pure-u-1-5">
-                <a (click)="addBibliografia()">
-                    <img src="../assets/add.svg" alt="Add" />
-                </a>
+        <div class="bibliography">
+            <div style="display: flex; justify-content: space-between">
+                <div class="pure-u-1-6" style="margin-left: 10px;">
+                    Bibliografia:
+                </div>
+                <div style="width: 6%">
+                    <a (click)="addBibliografia()">
+                        <img src="../assets/add.svg" alt="Add"/>
+                    </a>
+                </div>
             </div>
 
             <div class="" *ngFor="let eachBibliography of bibliography; let i = index">
                 <label>
                     <div class="pure-u-1-12" style="margin-top: 16px;">
                         <a (click)="excluirBibliografia(i)">
-                            <img src="../assets/delete.svg" alt="delete" />
+                            <img src="../assets/delete.svg" alt="delete"/>
                         </a>
                     </div>
                     <div class="pure-u-11-12">
                         <textarea (input)="bibliography[i][0]=$event.target.value"
-                            value="{{eachBibliography[0]}}"></textarea>
+                                  value="{{eachBibliography[0]}}"></textarea>
                     </div>
                 </label>
                 <label>
                     <div class="pure-u-1-12"></div>
                     <div class="pure-u-11-12 right-align">
                         <textarea (input)="bibliography[i][1]=$event.target.value"
-                            value="{{eachBibliography[1]}}"></textarea>
+                                  value="{{eachBibliography[1]}}"></textarea>
                     </div>
                 </label>
             </div>
@@ -48,24 +50,26 @@
 
 
         <div class="bibliography">
-            <div class="pure-u-1-8" style="margin-left: 10px; margin-right: 10px;">
-                Materiais:
+            <div style="display: flex; justify-content: space-between">
+                <div class="pure-u-1-8" style="margin-left: 10px; margin-right: 10px;">
+                    Materiais:
+                </div>
+                <div style="width: 6%">
+                    <a (click)="addMaterial()">
+                        <img src="../assets/add.svg" alt="Add"/>
+                    </a>
+                </div>
             </div>
-            <div class="pure-u-1-5">
-                <a (click)="addMaterial()">
-                    <img src="../assets/add.svg" alt="Add" />
-                </a>
-            </div>
-
             <div *ngFor="let eachMaterial of material; let i = index">
                 <label>
                     <div class="pure-u-1-12" style="margin-top: 16px;">
                         <a (click)="excluirMaterial(i)">
-                            <img src="../assets/delete.svg" alt="delete" />
+                            <img src="../assets/delete.svg" alt="delete"/>
                         </a>
                     </div>
                     <div class="pure-u-11-12">
-                        <textarea (input)="material[i][0]=$event.target.value" value="{{eachMaterial[0]}}"></textarea>
+                            <textarea (input)="material[i][0]=$event.target.value"
+                                      value="{{eachMaterial[0]}}"></textarea>
                     </div>
                 </label>
 
@@ -73,26 +77,28 @@
                     <div class="pure-u-1-12"></div>
                     <div class="pure-u-11-12 right-align">
 
-                        <textarea (input)="material[i][1]=$event.target.value" value="{{eachMaterial[1]}}"></textarea>
+                            <textarea (input)="material[i][1]=$event.target.value"
+                                      value="{{eachMaterial[1]}}"></textarea>
                     </div>
                 </label>
             </div>
+
         </div>
 
         <div class="bibliography">
-            <div class="pure-u-1-12" style="margin-left: 10px;">
-                Aulas:
+            <div style="display: flex; justify-content: space-between">
+                <div class="pure-u-1-12" style="margin-left: 10px;">
+                    Aulas:
+                </div>
+                <div style="width: 6%">
+                    <a (click)="addAula()"><img src="../assets/add.svg" alt="Add"/></a>
+                </div>
             </div>
-            <div class="pure-u-1-5">
-
-                <a (click)="addAula()"><img src="../assets/add.svg" alt="Add" /></a>
-            </div>
-
             <div *ngFor="let aula of aulas; let i = index">
                 <label>
                     <div class="pure-u-1-12" style="margin-top: 16px;">
                         <a (click)="excluirAula(i)">
-                            <img src="../assets/delete.svg" alt="delete" />
+                            <img src="../assets/delete.svg" alt="delete"/>
                         </a>
                     </div>
                     <div class="pure-u-11-12">

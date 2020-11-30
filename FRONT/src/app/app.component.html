@@ -21,7 +21,7 @@
         <mat-form-field style="padding-top: 24px">
 
             <label>
-                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Procurar" class="search" />
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Procurar" class="search"/>
             </label>
 
         </mat-form-field>
@@ -49,22 +49,21 @@
             </ng-container>
 
 
-
             <ng-container matColumnDef="edit">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>
 
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row" style="justify-content: center">
 
-                    <button mat-raised-button (click)="openViewDialog(row)">
-                        <img src="../assets/lupa.svg" alt="Ver Mais" />
+                    <button style="margin: 0 5px" mat-raised-button (click)="openViewDialog(row)">
+                        <img src="../assets/lupa.svg" alt="Ver Mais"/>
                     </button>
-                    <button mat-raised-button (click)="handleDelete(row._id)">
-                        <img src="../assets/excluir1.svg" alt="Excluir" />
+                    <button style="margin: 0 5px" mat-raised-button (click)="handleDelete(row._id)">
+                        <img src="../assets/excluir1.svg" alt="Excluir"/>
                     </button>
 
-                    <button mat-raised-button (click)="openEditDialog(row)">
-                        <img src="../assets/editar.svg" alt="Editar" />
+                    <button style="margin: 0 5px" mat-raised-button (click)="openEditDialog(row)">
+                        <img src="../assets/editar.svg" alt="Editar"/>
                     </button>
 
 
@@ -72,15 +71,14 @@
             </ng-container>
 
 
-
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
         <button mat-raised-button (click)="handleAdd()" id="fab">
-            <img src="../assets/fab.svg" alt="Adicionar" />
+            <img src="../assets/fab.svg" alt="Adicionar"/>
         </button>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
-            style="display: flex;justify-content: center;padding: 10px;"></mat-paginator>
+                       style="display: flex;justify-content: center;padding: 10px;"></mat-paginator>
 
     </div>
 </div>
