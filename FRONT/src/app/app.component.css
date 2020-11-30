@@ -40,6 +40,12 @@ button {
     padding: 5px 10px 0 5px;
 }
 
+#titulo {
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 40px;
+}
+
 .editBody textarea {
     width: 100%;
     resize: none;
