@@ -5,8 +5,22 @@ const http = require('http');
  * GET /turmas
  */
 
-module.exports.getAllTurmas = async function (query) {
-    return await Turma.find(query);
+module.exports.getAllTurmas = async function (query, expand) {
+    const turma = await Turma.find(query).catch(() => {
+        return undefined
+    })
+
+    if (expand && turma) {
+        const listExpand = []
+        for (let i = 0; i < turma.length; i++) {
+            listExpand.push(await expandTurma(turma[i], expand))
+        }
+        return await Promise.all(listExpand).then((expands) => {
+            return turma
+        })
+    } else {
+        return turma ? turma : 404
+    }
 };
 
 /**
@@ -19,27 +33,35 @@ module.exports.getTurmaById = async function (id, query) {
     })
 
     if (query && turma) {
-        const listGetApi = []
-        for (let i = 0; i < query.length; i++) {
-            listGetApi.push(getAPIs(query[i], turma[query[i]]))
-        }
-        return await Promise.all(listGetApi).then((expands) => {
-            for (let i = 0; i < query.length; i++) {
-                turma._doc[query[i]] = expands[i]
-            }
-            return turma
-        })
+        return await expandTurma(turma, query)
     } else {
         return turma ? turma : 404
     }
 }
 
+async function expandTurma(turma, query) {
+    console.log(turma)
+    console.log(query)
+    const listGetApi = []
+    for (let i = 0; i < query.length; i++) {
+        listGetApi.push(getAPIs(query[i], turma[query[i]]))
+    }
+    return await Promise.all(listGetApi).then((expands) => {
+        for (let i = 0; i < query.length; i++) {
+            turma._doc[query[i]] = expands[i]
+        }
+        console.log(turma)
+        return turma
+    })
+}
+
+
 const APIs = {
-    aulas: 'http://admin:admin@ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes',
-    professor: 'http://ec2-3-91-232-225.compute-1.amazonaws.com:3333/professores',
-    alunos: 'http://ec2-3-236-239-112.compute-1.amazonaws.com:3000/api/alunos',
-    disciplina: 'http://ec2-18-225-37-214.us-east-2.compute.amazonaws.com:3333/disciplinas',
-    sala: 'http://ec2-18-220-149-196.us-east-2.compute.amazonaws.com:3001/room'
+    aulas: 'http://admin:admin@ec2-3-15-145-30.us-east-2.compute.amazonaws.com:3000/api/v1/classes',
+    professor: 'http://3.231.200.235:3333/professores',
+    alunos: 'http://ec2-34-228-52-17.compute-1.amazonaws.com:3000/api/alunos',
+    disciplina: 'http://ec2-3-135-209-171.us-east-2.compute.amazonaws.com:3333/disciplinas',
+    sala: 'http://ec2-3-23-106-145.us-east-2.compute.amazonaws.com:3001/room'
 }
 
 function getAPIs(api, id) {
