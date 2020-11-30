@@ -188,16 +188,16 @@ export class DialogEdit {
 export class DialogAdd {
     name: string;
     description: string;
-    bibliography: [];
-    material: [];
-    aulas: [];
+    bibliography: any[];
+    material: any[];
+    aulas: any[];
 
     constructor(private http: HttpClient) {
         this.name = '';
         this.description = '';
-        this.bibliography = [];
-        this.material = [];
-        this.aulas = [];
+        this.bibliography = ['',' '];
+        this.material = ['',''];
+        this.aulas = [''];
     }
 
     submit() {

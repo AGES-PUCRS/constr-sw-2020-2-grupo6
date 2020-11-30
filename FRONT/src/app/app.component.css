@@ -1,3 +1,7 @@
+.mat-dialog-container {
+ background-color: #F9F9F9;
+}
+
 .top {
     display: flex;
     flex-direction: row;
@@ -25,17 +29,40 @@ button {
     flex-direction: column;
     width: 50vh;
 }
+
 .editBody ul {
     background: #3399ff;
     padding: 20px;
 }
+
 .editBody ul li {
     background: #cce5ff;
     padding: 5px 10px 0 5px;
 }
+
 .editBody textarea {
     width: 100%;
     resize: none;
+    width: 96%;
+    padding-top: 18px;
+    padding-left: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+     background-color: #F5F5F5;
+}
+
+.bibliography {
+    margin: 48px 0;
+}
+
+.button-add {
+    height: 60px;
+    width: 448px;
+    left: 55px;
+    top: 1003px;
+    border-radius: 8px;
+    background-color: #0750DE;
+    color: #FFFFFF;
 }
 
 .mat-form-field {
@@ -127,11 +154,19 @@ header .header-login:hover {
     transition: 0.5s;
 }
 
-.viewBody{
+.viewBody {
     width: 50vh;
- }
+}
 
 .center {
     display: flex;
     justify-content: center;
+}
+
+.modal-input {
+    position: absolute;
+    width: 448px;
+    height: 60px;
+    left: 57px;
+    top: 96px;
 }
