@@ -50,7 +50,6 @@ export class AppComponent {
 
     }
 
-
     ngAfterViewInit() {
         this.getInfo();
     }
@@ -61,11 +60,8 @@ export class AppComponent {
         this.dataSource.filter = filterValue;
     }
 
-    handleDelete(id) {
-        this.http.delete(`http://3.128.18.231:5000/content/${id}`)
-            .subscribe((dataa: Content[] | any) => {
-                this.getInfo();
-            });
+    handleDelete(data) {
+        this.dialog.open(DialogDelete, {data});
     }
 
     handleAdd() {
@@ -109,7 +105,7 @@ export class DialogEdit {
             this.material.push([...b]);
         }
 
-        this.aulas = []
+        this.aulas = [];
         // @ts-ignore
         this.aulas.push([...data.aulas]);
     }
@@ -123,7 +119,7 @@ export class DialogEdit {
             aulas: this.aulas
         };
         this.http.patch(`http://3.128.18.231:5000/content/${this.data._id}`, body)
-            .subscribe((dataa: Content[] | any) => {
+            .subscribe(() => {
                 this.data.name = this.name;
                 this.data.description = this.description;
                 this.data.bibliography = this.bibliography;
@@ -209,7 +205,7 @@ export class DialogAdd {
             aulas: this.aulas
         };
         this.http.post(`http://3.128.18.231:5000/content`, body)
-            .subscribe((dataa: Content[] | any) => {
+            .subscribe(() => {
                 this.name = '';
                 this.description = '';
                 this.bibliography = [];
@@ -249,5 +245,23 @@ export class DialogAdd {
     excluirAula(index) {
         // @ts-ignore
         this.aulas.splice(index, 1);
+    }
+}
+
+@Component({
+    selector: 'dialog-delete',
+    templateUrl: 'modalDelete.html',
+})
+
+export class DialogDelete {
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Content, private http: HttpClient) {
+    }
+
+    handleDelete(id) {
+        this.http.delete(`http://3.128.18.231:5000/content/${id}`)
+            .subscribe(() => {
+                window.location.reload();
+            });
     }
 }

@@ -1,0 +1,22 @@
+<div class="center">
+    <h1 mat-dialog-title class="center">Deseja excluir o conteúdo {{data.name}}?</h1>
+</div>
+
+<div mat-dialog-content class="viewBody">
+    <p>{{data.description}}</p>
+    Bibliografia:
+    <ul>
+        <li *ngFor="let bibliography of data.bibliography">{{bibliography[0] + ': ' + bibliography[1]}}</li>
+    </ul>
+    Materiais:
+    <ul>
+        <li *ngFor="let material of data.material">{{material[0] + ': ' + material[1]}}</li>
+    </ul>
+    Aulas:
+    <ul>
+        <li *ngFor="let aula of data.aulas">{{aula}}</li>
+    </ul>
+</div>
+
+
+<button class="button-delete" (click)="handleDelete(data._id)" mat-dialog-close>Excluir</button>

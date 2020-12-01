@@ -1,5 +1,5 @@
 .mat-dialog-container {
- background-color: #F9F9F9;
+    background-color: #F9F9F9;
 }
 
 .top {
@@ -54,7 +54,7 @@ button {
     padding-left: 12px;
     border-radius: 8px;
     font-size: 18px;
-     background-color: #F5F5F5;
+    background-color: #F5F5F5;
 }
 
 .bibliography {
@@ -69,6 +69,23 @@ button {
     border-radius: 8px;
     background-color: #0750DE;
     color: #FFFFFF;
+    cursor: pointer;
+}
+
+.button-delete {
+    height: 60px;
+    width: 100%;
+    left: 55px;
+    top: 1003px;
+    border-radius: 8px;
+    background-color: #c80000;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.add-list {
+    width: 6%;
+    cursor: pointer;
 }
 
 .mat-form-field {
