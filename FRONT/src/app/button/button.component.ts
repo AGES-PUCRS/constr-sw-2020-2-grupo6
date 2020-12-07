@@ -12,7 +12,8 @@ export class ButtonComponent implements OnInit {
     }
 
     callParentFunction(): void {
-        this.buttonConfig.parent[this.buttonConfig.parentFuncion](this.buttonConfig.parentFuncionParam)
+        let {parent, parentFuncion,parentFuncionParam} = this.buttonConfig
+        parent[parentFuncion](parentFuncionParam)
     }
 
     ngOnInit(): void {
