@@ -40,7 +40,7 @@ export class AppComponent {
     }
 
     getInfo(){
-        this.http.get<Content>('http://3.128.18.231:5000/content/')
+        this.http.get<Content>('http://18.223.190.133:3333/content')
             .subscribe((data: Content[] | any) => {
                 console.log(data);
                 this.dataSource = new MatTableDataSource(data);
@@ -106,8 +106,9 @@ export class DialogEdit {
         }
 
         this.aulas = [];
+        console.log(data.aulas)
         // @ts-ignore
-        this.aulas.push([...data.aulas]);
+        this.aulas = [...data.aulas];
     }
 
     submit() {
@@ -118,7 +119,8 @@ export class DialogEdit {
             material: this.material,
             aulas: this.aulas
         };
-        this.http.patch(`http://3.128.18.231:5000/content/${this.data._id}`, body)
+        console.log(body)
+        this.http.patch(`http://18.223.190.133:3333/content/${this.data._id}`, body)
             .subscribe(() => {
                 this.data.name = this.name;
                 this.data.description = this.description;
@@ -204,7 +206,7 @@ export class DialogAdd {
             material: this.material,
             aulas: this.aulas
         };
-        this.http.post(`http://3.128.18.231:5000/content`, body)
+        this.http.post(`http://18.223.190.133:3333/content`, body)
             .subscribe(() => {
                 this.name = '';
                 this.description = '';
@@ -259,7 +261,7 @@ export class DialogDelete {
     }
 
     handleDelete(id) {
-        this.http.delete(`http://3.128.18.231:5000/content/${id}`)
+        this.http.delete(`http://18.223.190.133:3333/content/${id}`)
             .subscribe(() => {
                 window.location.reload();
             });
