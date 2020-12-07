@@ -55,16 +55,15 @@
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row" style="justify-content: center">
 
-                    <button style="margin: 0 5px" mat-raised-button (click)="openViewDialog(row)">
-                        <img src="../assets/lupa.svg" alt="Ver Mais"/>
-                    </button>
-                    <button style="margin: 0 5px" mat-raised-button (click)="handleDelete(row)">
-                        <img src="../assets/excluir1.svg" alt="Excluir"/>
-                    </button>
-
-                    <button style="margin: 0 5px" mat-raised-button (click)="openEditDialog(row)">
-                        <img src="../assets/editar.svg" alt="Editar"/>
-                    </button>
+                    <app-button
+                        [buttonConfig]="{src: '../assets/lupa.svg', parentFuncionParam: row, parentFuncion: 'openViewDialog', parent: this}">
+                    </app-button>
+                    <app-button
+                        [buttonConfig]="{src: '../assets/excluir1.svg', parentFuncionParam: row, parentFuncion: 'handleDelete', parent: this}">
+                    </app-button>
+                    <app-button
+                        [buttonConfig]="{src: '../assets/editar.svg', parentFuncionParam: row, parentFuncion: 'openEditDialog', parent: this}">
+                    </app-button>
 
                 </mat-cell>
             </ng-container>

@@ -32,6 +32,7 @@ export class AppComponent {
     }
 
     openViewDialog(data) {
+        console.log(this)
         this.dialog.open(DialogView, {data});
     }
 
@@ -40,13 +41,25 @@ export class AppComponent {
     }
 
     getInfo(){
-        this.http.get<Content>('http://18.223.190.133:3333/content')
+        let data = [{
+            aulas: [1,2],
+            bibliography: [['a','b'], ['c','d']],
+            material: [['e','f']],
+            name: 'nome',
+            description: 'desc',
+            _id: 'skdjfghiuysjdf'
+        }]
+        // @ts-ignore
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        /*this.http.get<Content>('http://18.223.190.133:3333/content')
             .subscribe((data: Content[] | any) => {
                 console.log(data);
                 this.dataSource = new MatTableDataSource(data);
                 this.dataSource.paginator = this.paginator;
                 this.dataSource.sort = this.sort;
-            })
+            })*/
 
     }
 

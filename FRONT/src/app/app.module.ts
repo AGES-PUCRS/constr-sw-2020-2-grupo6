@@ -35,6 +35,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         DialogView,
         DialogEdit,
         DialogAdd,
-        DialogDelete
+        DialogDelete,
+        ButtonComponent
     ],
     imports: [
         BrowserModule,

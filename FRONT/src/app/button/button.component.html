@@ -1,0 +1,17 @@
+<ng-container *ngTemplateOutlet="buttonConfig['text'] ? text : image">
+</ng-container>
+
+<!-- Text Button -->
+<ng-template #text>
+    <button type="button"
+            (click)="callParentFunction()">
+        {{ buttonConfig.text | uppercase}}
+    </button>
+</ng-template>
+
+<!-- Image Button -->
+<ng-template #image>
+    <button (click)="callParentFunction()" class="button">
+        <img [src]="buttonConfig.src" alt=""/>
+    </button>
+</ng-template>
